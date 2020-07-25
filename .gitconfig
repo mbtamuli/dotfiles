@@ -1,0 +1,10 @@
+[user]
+	email = mbtamuli@gmail.com
+	name = Mriyam Tamuli
+	signingkey = C411F23E0515E902
+[pull]
+	rebase = false
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
