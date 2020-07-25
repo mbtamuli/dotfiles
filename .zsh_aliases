@@ -181,7 +181,6 @@ function gpa {
     fi
   fi
 }
-
 function msvpn {
   if [ "$1" = "connect" ]; then
     gpa
@@ -196,3 +195,4 @@ nameserver 172.27.0.60" \
   fi
 }
 alias config='/usr/bin/git --git-dir=/home/mbtamuli/.cfg/ --work-tree=/home/mbtamuli'
+alias cat="bat"
