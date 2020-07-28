@@ -147,14 +147,10 @@ bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 10
 
 # Screenshot
-# scrot - selection
-bindsym --release 0xff61 exec scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-# scrot - fullscreen
-bindsym Shift+Print exec scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-# graphicsmagic - selection
-# bindsym --release 0xff61 exec gm import '/tmp/%F_%T_$wx$h.png' && xclip -selection clipboard -target image/png -i $f && rm $f
-# scrot - fullscreen
-# bindsym Shift+Print exec scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+# selection
+bindsym --release 0xff61 exec maim -s -u | xclip -selection clipboard -t image/png -i
+# fullscreen
+bindsym Shift+Print exec maim | xclip -selection clipboard -t image/png
 
 # Resize mode
 mode "resize" {
