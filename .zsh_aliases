@@ -189,7 +189,8 @@ function msvpn {
       && echo "search metricstream.com\n \
 nameserver 172.27.0.10\n \
 nameserver 172.27.0.60" \
-              | sudo resolvconf -a wlp59s0.inet
+              | sudo resolvconf -a wlp59s0.inet; \
+      sudo split_vpn.py
   else
     globalprotect disconnect && sudo resolvconf -d wlp59s0.inet
   fi
