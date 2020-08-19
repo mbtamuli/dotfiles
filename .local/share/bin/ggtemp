@@ -1,0 +1,4 @@
+#!/bin/sh
+PROFILEDIR=$(mktemp -d /tmp/googlechrome.XXXXXX)
+google-chrome-stable --user-data-dir=$PROFILEDIR --no-first-run
+jq '. + {"download": {"default_directory": "/home/mbtamuli/downloads","directory_upgrade": true}}' $PROFILEDIR/Default/Preferences > $PROFILEDIR/Default/P && mv $PROFILEDIR/Default/P $PROFILEDIR/Default/Preferences
