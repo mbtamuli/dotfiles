@@ -1,4 +1,16 @@
 #!/usr/bin/env python
+
+# Create a config file at $HOME/.config/split-vpn/config.yaml 
+# in the following format
+#
+# ---
+# WIRELESS_INTERFACE: wlp59s0
+# TUNNEL_INTERFACE: gpd0
+# VPN_HOSTS:
+#     - git.example.com
+#     - randomhost
+#     - artifactory.example.com
+
 import os
 import pwd
 import subprocess
