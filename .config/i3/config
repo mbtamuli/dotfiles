@@ -36,7 +36,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:SourceCodePro 11
+font xft:SourceCodePro 9
 # font pango:Ubuntu Mono 12
 # font pango:Noto Mono 12
 
@@ -44,7 +44,7 @@ font xft:SourceCodePro 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
