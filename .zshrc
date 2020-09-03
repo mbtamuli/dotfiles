@@ -7,11 +7,11 @@ ZSH=/usr/share/oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
-# ZSH_THEME="gnzh"
-ZSH_THEME="mbtamuli-gnzh"
+ZSH_THEME="gnzh"
+# ZSH_THEME="mbtamuli-gnzh"
 # ZSH_THEME="agnoster"
 
-plugins=(git z pass mbtamuli)
+plugins=(git z pass)
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -42,9 +42,9 @@ DIRSTACKSIZE=5
 
 GPG_TTY=$(tty)
 export GPG_TTY
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+export LANGUAGE=en_IN.UTF-8
 export EDITOR='vim'
 export GOPATH="$HOME/workspace/go"
 export GOROOT=$(go env GOROOT)
