@@ -1,12 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
+# ZSH_THEME="gianu"
 ZSH_THEME="gnzh"
 # ZSH_THEME="mbtamuli-gnzh"
 # ZSH_THEME="agnoster"
@@ -49,7 +49,12 @@ export EDITOR='vim'
 export GOPATH="$HOME/workspace/go"
 export GOROOT=$(go env GOROOT)
 
-source $ZSH/oh-my-zsh.sh
+fpath=($fpath ~/.zsh/completion)
+autoload -U compinit
+compinit
+
+source "$ZSH/oh-my-zsh.sh"
+export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 # aliases
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

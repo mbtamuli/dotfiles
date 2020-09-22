@@ -199,3 +199,4 @@ nameserver 172.27.0.60" \
 }
 alias config='/usr/bin/git --git-dir=/home/mbtamuli/.cfg/ --work-tree=/home/mbtamuli'
 alias cat="bat"
+alias alert="paplay /usr/share/sounds/freedesktop/stereo/bell.oga"
