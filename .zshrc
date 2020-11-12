@@ -52,9 +52,10 @@ export GOROOT=$(go env GOROOT)
 fpath=($fpath ~/.zsh/completion)
 autoload -U compinit
 compinit
+DISABLE_MAGIC_FUNCTIONS=true
 
 source "$ZSH/oh-my-zsh.sh"
-export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 # aliases
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

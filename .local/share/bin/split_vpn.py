@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Create a config file at $HOME/.config/split-vpn/config.yaml 
+# Create a config file at $HOME/.config/split-vpn/config.yaml
 # in the following format
 #
 # ---

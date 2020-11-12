@@ -187,12 +187,12 @@ function msvpn {
   if [ "$1" = "connect" ]; then
     gpa
     systemctl is-active --quiet gpd.service && true || {sudo systemctl start gpd.service; sleep 5}
-    globalprotect connect -portal 14.143.117.86 \
-      && echo "search metricstream.com\n \
-nameserver 172.27.0.10\n \
-nameserver 172.27.0.60" \
-              | sudo resolvconf -a wlp59s0.inet; \
-      sudo split_vpn.py
+    globalprotect connect -portal 14.143.117.86 || sudo split_vpn.py
+    # globalprotect connect -portal gpvpn.metricstream.com || sudo split_vpn.py
+#       && echo "search metricstream.com\n \
+# nameserver 172.27.0.10\n \
+# nameserver 172.27.0.60" \
+#               | sudo resolvconf -a wlp59s0.inet
   else
     globalprotect disconnect && sudo resolvconf -d wlp59s0.inet
   fi
