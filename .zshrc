@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh
+ZSH=/home/mbtamuli/.oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
