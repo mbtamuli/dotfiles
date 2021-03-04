@@ -40,11 +40,10 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
 
+[[ -s "/home/mbtamuli/.gvm/scripts/gvm" ]] && source "/home/mbtamuli/.gvm/scripts/gvm"
+
 GPG_TTY=$(tty)
 export GPG_TTY
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
-export LANGUAGE=en_IN.UTF-8
 export EDITOR='vim'
 export GOPATH="$HOME/workspace/go"
 export GOROOT=$(go env GOROOT)
