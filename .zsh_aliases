@@ -197,6 +197,6 @@ function msvpn {
     globalprotect disconnect && sudo resolvconf -d wlp59s0.inet
   fi
 }
-alias config='/usr/bin/git --git-dir=/home/mbtamuli/.cfg/ --work-tree=/home/mbtamuli'
+alias config='/usr/bin/git --git-dir=${HOME}/.cfg/ --work-tree=${HOME}'
 alias cat="bat"
 alias alert="paplay /usr/share/sounds/freedesktop/stereo/bell.oga"
