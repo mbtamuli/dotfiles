@@ -11,6 +11,7 @@ formulae=(
 	kube-ps1
 	gh
 	fzf
+	kubectx
 )
 casks=(
 	docker
