@@ -2,27 +2,28 @@
 
 formulae=(
 	bat
-	pass
-	kind
-	golangci-lint
-	protoc-gen-go
 	coreutils
-	zsh
-	kube-ps1
-	gh
 	fzf
+	gh
+	golangci-lint
+	helm
+	kind
+	kube-ps1
 	kubectx
+	pass
+	protoc-gen-go
+	zsh
 )
 casks=(
 	docker
 	google-chrome
-	rectangle
-	visual-studio-code
 	iterm2
-	multipass
 	keepingyouawake
+	multipass
+	rectangle
 	slack
 	tor-browser
+	visual-studio-code
 )
 
 function install_formula() {
