@@ -22,6 +22,7 @@ casks=(
 	multipass
 	keepingyouawake
 	slack
+	tor-browser
 )
 
 function install_formula() {
