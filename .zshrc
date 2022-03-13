@@ -2,12 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/home/mbtamuli/.oh-my-zsh
+ZSH=/Users/mbtamuli/.oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
-# ZSH_THEME="gianu"
-ZSH_THEME="gnzh"
+ZSH_THEME="gianu"
+# ZSH_THEME="gnzh"
 # ZSH_THEME="mbtamuli-gnzh"
 # ZSH_THEME="agnoster"
 
@@ -33,14 +33,10 @@ setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing nonexistent history.
-
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
-
-[[ -s "/home/mbtamuli/.gvm/scripts/gvm" ]] && source "/home/mbtamuli/.gvm/scripts/gvm"
 
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -54,8 +50,18 @@ compinit
 DISABLE_MAGIC_FUNCTIONS=true
 
 source "$ZSH/oh-my-zsh.sh"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/Library/Application Support/multipass/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/sbin:$PATH"
 
 # aliases
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+[[ -f ~/.acquia_aliases ]] && source ~/.acquia_aliases
 [[ -f ~/.kube/kubectl_aliases ]] && source ~/.kube/kubectl_aliases
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+source <(kubectl completion zsh)
+function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+alias k=kubectl
+complete -F __start_kubectl k
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
