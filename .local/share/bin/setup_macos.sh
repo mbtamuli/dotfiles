@@ -7,9 +7,11 @@ formulae=(
 	gh
 	golangci-lint
 	helm
+	jq
 	kind
 	kube-ps1
 	kubectx
+	kubernetes-cli
 	pass
 	protoc-gen-go
 	zsh

@@ -25,178 +25,19 @@ alias pi="yay --pacman powerpill --sync"
 alias pu="yay --pacman powerpill --remove"
 alias mplayer="mplayer -msgcolor -msgmodule -nolirc"
 alias img="feh -FZrD3"
-alias gcmsg="git commit -S -s -m"
+alias gcmsg="git commit --gpg-sign --signoff --message"
+gcmf() {
+        git commit --gpg-sign --signoff --message $(curl -s https://whatthecommit.com/index.txt)
+}
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
-alias ctc="xclip -selection clipboard"
-alias cfcli="docker run --rm -it -v $HOME/.cfcli.yml:/root/.cfcli.yml mbtamuli/cloudflare-cli"
-function sshkey {
-  [[ "$#" -lt 1 ]] && echo "Usage: sshkey <keyname> [<passphrase>]" && return 42
-  [[ -n "$1" ]] && name="$1" || passphrase="id_rsa"
-  [[ -n "$2" ]] && passphrase="$2" || passphrase=""
-  ssh-keygen -t rsa -b 4096 -C "$name" -N "$passphrase" -f "$name"
-}
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
 
-# VAGRANT
-alias up="vagrant up"
-alias down="vagrant halt"
-alias des="vagrant destroy"
-alias vssh="vagrant ssh"
-alias re="vagrant reload"
-
-function hub_to_local {
-  local_registry=192.168.0.210:5000
-
-  for image in $@; do
-    docker pull $image
-    docker tag $image $local_registry/$image
-    docker push $local_registry/$image
-    docker rmi $local_registry/$image
-  done
-}
-
-function push_to_local {
-  local_registry=192.168.0.210:5000
-
-  for image in $@; do
-    docker tag $image $local_registry/$image
-    docker push $local_registry/$image
-    docker rmi $local_registry/$image
-  done
-}
-
-function pull_from_local {
-  local_registry=192.168.0.210:5000
-
-  for image in $@; do
-    docker pull $local_registry/$image
-    docker tag $local_registry/$image $image
-    docker rmi $local_registry/$image
-  done
-}
-
-function docker-cleanup {
-  echo "Removing all containers"
-  docker rm -f $(docker ps -aq -f "label=org.label-schema.vendor=EasyEngine")
-  echo "Removing all networks"
-  docker network prune -f $(docker network ls -f "label=org.label-schema.vendor=EasyEngine")
-  echo "Removing all EasyEngine volumes"
-  docker volume rm -f $(docker volume ls -f "label=org.label-schema.vendor=EasyEngine" -q)
-  # echo "Removing EasyEngine images"
-  # docker image rm $(docker image ls -f "label=org.label-schema.vendor=EasyEngine" -q)
-}
-
-function ee-clr {
-  docker-cleanup
-  echo "Removing site-roots"
-  sudo rm -rf /opt/easyengine ~/ee-sites
-}
-
-function eermsite {
-  docker rm -f $(docker ps -aq -f 'label=io.easyengine.site=test.example.com')
-
-}
-
-alias ee="sudo $HOME/workspace/rtcamp/easyengine/easyengine/bin/ee"
-
-function blog {
-  pushd "$PWD" > /dev/null 2>&1
-  if [[ $1 = 'start' ]]; then
-    blog_container_exists="$(docker ps -aq -f name=blog | wc -l)"
-    if [[ "$blog_container_exists" -eq 0 ]]; then
-      echo "Blog container doesn't exist. Creating new container"
-      docker run -dit --name blog -p 35729:35729 -p 4000:4000 -v $PWD:/srv/jekyll jekyll/jekyll jekyll serve --trace --livereload --drafts > /dev/null 2>&1
-    else
-      is_blog_container_running="$(docker inspect -f '{{.State.Running}}' blog)"
-      if [[ "$is_blog_container_running" = "true" ]]; then
-        echo "Blog container is already running"
-      else
-        echo "Blog container exists, starting that container"
-        docker start blog > /dev/null 2>&1
-      fi
-    fi
-  elif [[ $1 = 'remove' ]]; then
-    echo "Removing blog container"
-    docker rm -f blog > /dev/null 2>&1
-  elif [[ $1 = 'stop' ]]; then
-    echo "Stopping blog container"
-    docker stop blog > /dev/null 2>&1
-  else
-    echo "Usage: blog [start|stop|remove]"
-  fi
-  popd "$PWD" > /dev/null 2>&1
-}
-
-function pcodev {
-  pushd "$HOME/workspace/rtcamp/easyengine/easyengine/vendor/easyengine" > /dev/null 2>&1
-  for package in *; do
-    pushd "$package" > /dev/null 2>&1
-    pwd
-    gco develop
-    popd > /dev/null 2>&1
-  done
-  popd > /dev/null 2>&1
-}
-function platest {
-  pcodev
-  pushd "$HOME/workspace/rtcamp/easyengine/easyengine/vendor/easyengine" > /dev/null 2>&1
-  for package in *; do
-    pushd "$package" > /dev/null 2>&1
-    pwd
-    ggpull
-    echo
-    popd > /dev/null 2>&1
-  done
-  popd > /dev/null 2>&1
-}
-
-node_docker_cmd='docker run --rm -it --init --name node -p 3000:3000 -p 8080:8080 -u node -v /home/mbtamuli/workspace/node-workspace/npm-global:/home/node/.npm-global -v /home/mbtamuli/workspace/node-workspace/home/.bash_history:/home/node/.bash_history -v $(pwd):/app mbtamuli/node-12.10'
-
-alias node="${node_docker_cmd} node"
-alias npm="${node_docker_cmd} npm"
-alias npx="${node_docker_cmd} npx"
-alias ncc="${node_docker_cmd} ncc"
-alias yarn="${node_docker_cmd} yarn"
-alias http-server="${node_docker_cmd} http-server"
-
 alias gcssh="gcloud alpha cloud-shell ssh --ssh-flag='-o ServerAliveInterval=120' --ssh-flag='-o ServerAliveCountMax=30'"
 
-function blue {
-  if [ "$1" = "connect" ]; then
-    sudo systemctl start bluetooth.service && bluetoothctl power on && bluetoothctl connect 74:D6:37:BD:ED:6A
-  else
-    bluetoothctl disconnect && bluetoothctl power off && sudo systemctl stop bluetooth.service
-  fi
-}
-
-function gpa {
-  PANGPA=/opt/paloaltonetworks/globalprotect/PanGPA
-
-  pgrep -u $USER PanGPA > /dev/null 2>&1
-
-  if [ $? -ne 0 ]; then
-    if [ -f $PANGPA ]; then
-      ( $PANGPA start & )
-    fi
-  fi
-}
-function msvpn {
-  if [ "$1" = "connect" ]; then
-    gpa
-    systemctl is-active --quiet gpd.service && true || {sudo systemctl start gpd.service; sleep 5}
-    globalprotect connect -portal 14.143.117.86 || sudo split_vpn.py
-    # globalprotect connect -portal gpvpn.metricstream.com || sudo split_vpn.py
-#       && echo "search metricstream.com\n \
-# nameserver 172.27.0.10\n \
-# nameserver 172.27.0.60" \
-#               | sudo resolvconf -a wlp59s0.inet
-  else
-    globalprotect disconnect && sudo resolvconf -d wlp59s0.inet
-  fi
-}
 alias config='/usr/bin/git --git-dir=${HOME}/.cfg/ --work-tree=${HOME}'
 alias cat="bat"
-alias alert="paplay /usr/share/sounds/freedesktop/stereo/bell.oga"
+alias inner="displayplacer 'id:68BE7096-C3E6-76C5-7AA1-082CC9742D4B res:3200x1800 hz:30 color_depth:8 scaling:on origin:(0,0) degree:0' 'id:42B0E1F5-E50A-CD78-E8E2-7CE88272CA3C res:1792x1120 hz:60 color_depth:8 scaling:on origin:(3200,2d95) degree:0'"
+alias outer="displayplacer 'id:68BE7096-C3E6-76C5-7AA1-082CC9742D4B res:3200x1800 hz:30 color_depth:8 scaling:on origin:(0,0) degree:0' 'id:42B0E1F5-E50A-CD78-E8E2-7CE88272CA3C res:1792x1120 hz:60 color_depth:8 scaling:on origin:(-1792,299) degree:0'"

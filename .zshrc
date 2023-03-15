@@ -1,15 +1,19 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export GOPATH="$HOME/workspace/go"
+export PATH="/usr/local/opt/openjdk/bin:$HOME/Library/Application Support/multipass/bin:${KREW_ROOT:-$HOME/.krew}/bin:/usr/local/opt/php@7.4/bin:$PATH:$HOME/.local/bin:$GOPATH/bin:/usr/local/sbin:$PATH"
+export JAVA_HOME="/usr/local/opt/openjdk/bin/java"
 
 # Path to your oh-my-zsh installation.
 ZSH=/Users/mbtamuli/.oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
-ZSH_THEME="gianu"
+# ZSH_THEME="gianu"
 # ZSH_THEME="gnzh"
 # ZSH_THEME="mbtamuli-gnzh"
 # ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 plugins=(git z pass)
 
@@ -38,10 +42,11 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
 
+# [[ -s "/home/mbtamuli/.gvm/scripts/gvm" ]] && source "/home/mbtamuli/.gvm/scripts/gvm"
+
 GPG_TTY=$(tty)
 export GPG_TTY
-export EDITOR='vim'
-export GOPATH="$HOME/workspace/go"
+export EDITOR='code'
 export GOROOT=$(go env GOROOT)
 
 fpath=($fpath ~/.zsh/completion)
@@ -50,7 +55,6 @@ compinit
 DISABLE_MAGIC_FUNCTIONS=true
 
 source "$ZSH/oh-my-zsh.sh"
-export PATH="$HOME/Library/Application Support/multipass/bin:${KREW_ROOT:-$HOME/.krew}/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/sbin:$PATH"
 
 # aliases
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
@@ -60,8 +64,11 @@ source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
 source <(kubectl completion zsh)
 function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
-export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 alias k=kubectl
 complete -F __start_kubectl k
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+source /Users/mbtamuli/workspace/acquia/pandora/teleport-tool/aliases
