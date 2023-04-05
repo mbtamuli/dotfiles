@@ -60,6 +60,7 @@ source "$ZSH/oh-my-zsh.sh"
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.acquia_aliases ]] && source ~/.acquia_aliases
 [[ -f ~/.kube/kubectl_aliases ]] && source ~/.kube/kubectl_aliases
+export KUBE_EDITOR='code --wait'
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
 source <(kubectl completion zsh)
