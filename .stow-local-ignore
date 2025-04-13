@@ -1,0 +1,8 @@
+# Custom ignore
+
+# Repo files
+.git
+README.md
+
+# Doesn't need to be a dotfile
+Brewfile
