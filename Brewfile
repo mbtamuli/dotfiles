@@ -17,6 +17,7 @@ brew "zoxide"
 
 # File & system utilities
 brew "dust"
+brew "duf"
 brew "entr"
 brew "eza"
 brew "hwatch"
