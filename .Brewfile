@@ -1,6 +1,5 @@
 # ========== Taps ==========
 tap "dotenvx/brew"
-tap "jandedobbeleer/oh-my-posh"
 
 # ========== CLI Tools ==========
 # Core utilities
@@ -11,8 +10,8 @@ brew "gnu-tar"
 brew "gnupg"
 
 # Shell enhancements
+brew "starship"
 brew "fzf"
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 brew "zoxide"
 
 # File & system utilities
@@ -23,6 +22,7 @@ brew "eza"
 brew "hwatch"
 brew "stow"
 brew "the_platinum_searcher"
+brew "direnv"
 
 # Network tools
 brew "aria2"
@@ -34,7 +34,6 @@ brew "docker"
 brew "gh"
 brew "go"
 brew "jq"
-brew "pass"
 brew "dotenvx/brew/dotenvx"
 
 # Kubernetes tools
@@ -45,9 +44,9 @@ brew "stern"
 
 # ========== Applications ==========
 # Terminals & editors
-cask "cursor"
-cask "iterm2"
+cask "ghostty"
 cask "visual-studio-code"
+cask "windsurf"
 
 # Browsers
 cask "arc"
@@ -58,11 +57,10 @@ cask "orbstack"
 # Media
 cask "vlc"
 
-
 # ========== System ==========
 
 # Fonts
-cask "font-monaspace"
+cask "font-monaspace-nerd-font"
 
 # Utilities
 cask "keepingyouawake"

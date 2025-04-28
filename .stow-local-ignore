@@ -1,8 +1,6 @@
-# Custom ignore
-
 # Repo files
 .git
 README.md
+install.sh
 
-# Doesn't need to be a dotfile
-Brewfile
+.stowrc

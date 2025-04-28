@@ -12,5 +12,7 @@ This command will install all the necessary dependencies and tools listed in the
 ## 🚀 Quick Setup
 
 ```sh
-stow --target=$HOME .
+stow .
 ```
+
+## Stow commands

@@ -19,7 +19,7 @@
         {
           "foreground": "p:lavender",
           "style": "plain",
-          "template": "{{ .UserName }}",
+          "template": "{{ .UserName }}@{{ .HostName }}",
           "type": "session"
         },
         {
@@ -85,6 +85,15 @@
           "style": "plain",
           "template": " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
           "type": "aws"
+        },
+        {
+          "type": "kubectl",
+          "foreground": "p:blue",
+          "background": "p:os",
+          "template": " {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
+          "properties": {
+              "parse_kubeconfig": true
+          }
         },
         {
           "foreground_templates": [
