@@ -75,9 +75,8 @@ main() {
     setup_os
     install_homebrew
     setup_brew_environment
-    install_stow
-    stow_dotfiles
     install_packages
+    stow_dotfiles
     print_success "Dotfiles installation complete!"
 }
 
