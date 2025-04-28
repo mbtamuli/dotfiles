@@ -1,68 +1,73 @@
-# ========== Taps ==========
+# Taps
 tap "dotenvx/brew"
 
-# ========== CLI Tools ==========
-# Core utilities
-brew "coreutils"
-brew "findutils"
-brew "gnu-sed"
-brew "gnu-tar"
-brew "gnupg"
+# -- macOS GNU utilities --
+if OS.mac?
+  brew "coreutils"
+  brew "findutils"
+  brew "gnu-sed"
+  brew "gnu-tar"
+end
 
-# Shell enhancements
+# -- Core tools --
+brew "gnupg"
 brew "starship"
 brew "fzf"
 brew "zoxide"
 
-# File & system utilities
-brew "dust"
-brew "duf"
-brew "entr"
-brew "eza"
-brew "hwatch"
-brew "stow"
-brew "the_platinum_searcher"
-brew "direnv"
+# -- File system tools --
+brew "dust"       # better du
+brew "duf"        # better df
+brew "entr"       # file watcher
+brew "eza"        # better ls
+brew "hwatch"     # watch with highlighting
+brew "stow"       # symlink farm manager
+brew "the_platinum_searcher"  # code search tool
+brew "direnv"     # directory environment manager
 
-# Network tools
-brew "aria2"
-brew "sshuttle"
+# -- Network tools --
+brew "aria2"      # download utility
+brew "sshuttle"   # VPN over SSH
 
-# Development tools
+# -- Development tools --
 brew "awscli"
 brew "docker"
-brew "gh"
+brew "gh"         # GitHub CLI
 brew "go"
 brew "jq"
 brew "dotenvx/brew/dotenvx"
 
-# Kubernetes tools
+# -- Kubernetes tools --
 brew "helm"
 brew "kind"
 brew "kubernetes-cli"
 brew "stern"
 
-# ========== Applications ==========
-# Terminals & editors
-cask "ghostty"
-cask "visual-studio-code"
-cask "windsurf"
+# -- Casks are Mac Only --
+if OS.mac?
+  # Terminal and editors
+  cask "ghostty"
+  cask "visual-studio-code"
+  cask "windsurf"
 
-# Browsers
-cask "arc"
+  # Browsers
+  cask "arc"
 
-# Development environments
-cask "orbstack"
+  # Virtualization
+  cask "orbstack"
 
-# Media
-cask "vlc"
+  # Media
+  cask "vlc"
 
-# ========== System ==========
+  # Fonts
+  cask "font-monaspace-nerd-font"
 
-# Fonts
-cask "font-monaspace-nerd-font"
+  # Utilities
+  cask "keepingyouawake"    # prevent sleep
+  cask "keyboardcleantool"  # disable keyboard for cleaning
+  cask "shottr"             # screenshot tool
+end
 
-# Utilities
-cask "keepingyouawake"
-cask "keyboardcleantool"
-cask "shottr"
+if OS.linux?
+  brew "zsh"
+end
