@@ -14,6 +14,7 @@ brew "gnupg"          # GNU Pretty Good Privacy (PGP) package
 brew "starship"       # Cross-shell prompt for astronauts
 brew "fzf"            # Command-line fuzzy finder written in Go
 brew "zoxide"         # Shell extension to navigate your filesystem faster
+brew "bat"            # Clone of cat(1) with syntax highlighting and Git integration
 
 # -- File system tools --
 brew "dust"           # More intuitive version of du in rust
