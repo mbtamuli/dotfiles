@@ -1,48 +1,75 @@
 # Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+'$schema' = 'https://starship.rs/config-schema.json'
 
-format = "$directory$character"
+# A minimal left prompt
+format = '$directory$character'
 
-right_format = "$all"
+# move the rest of the prompt to the right
+right_format = '$all'
+
+# A continuation prompt that displays two filled-in arrows
+continuation_prompt = '▶▶ '
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
 
 [aws]
-symbol = "  "
+symbol=' '
+format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+
+[gcloud]
+disabled = true
 
 [directory]
-read_only = " 󰌾"
+read_only = ' 󰌾'
+style = 'bg:peach fg:crust'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+
+[directory.substitutions]
+'Documents' = '󰈙 '
+'Downloads' = ' '
+'Music' = '󰝚 '
+'Pictures' = ' '
+'Developer' = '󰲋 '
 
 [docker_context]
-symbol = " "
+symbol = ' '
 
 [git_branch]
-symbol = " "
+symbol = '󰊢 '
 
 [git_commit]
 tag_symbol = '  '
 
 [golang]
-symbol = " "
+symbol = ' '
 
 [hostname]
-ssh_symbol = " "
+ssh_symbol = ' '
 
 [memory_usage]
-symbol = "󰍛 "
+symbol = '󰍛 '
 
 [nodejs]
-symbol = " "
+symbol = ' '
 
 [os.symbols]
-Macos = " "
+Macos = ' '
 
 [package]
-symbol = "󰏗 "
+symbol = '󰏗 '
 
 [php]
-symbol = " "
+symbol = ' '
 
 [python]
-symbol = " "
+symbol = ' '
 
 [swift]
-symbol = " "
+symbol = ' '

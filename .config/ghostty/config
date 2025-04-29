@@ -1,3 +1,4 @@
 theme = dark:catppuccin-mocha,light:catppuccin-latte
-font-family = "Monaspace Krypton Var"
+font-family = "MonaspiceKr NFM"
+font-size = 15
 auto-update = off
