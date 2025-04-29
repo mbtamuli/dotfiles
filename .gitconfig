@@ -1,7 +1,8 @@
 [user]
 	name = Mriyam Tamuli
 	email = mbtamuli@gmail.com
-	signingkey = 88E644DE3BA18DAC
+	#signingkey = 88E644DE3BA18DAC
+	signingkey = 9C11F52C0AAF1EDB
 [commit]
 	gpgsign = true
 [tag]
