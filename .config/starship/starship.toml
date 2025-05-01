@@ -32,11 +32,11 @@ truncation_length = 3
 truncation_symbol = '…/'
 
 [directory.substitutions]
-'Documents' = '󰈙 '
-'Downloads' = ' '
-'Music' = '󰝚 '
-'Pictures' = ' '
-'Developer' = '󰲋 '
+'Documents' = '󰈙'
+'Downloads' = ''
+'Music' = '󰝚'
+'Pictures' = ''
+'projects' = '󰲋'
 
 [docker_context]
 symbol = ' '
