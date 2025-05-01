@@ -2,3 +2,4 @@ theme = dark:catppuccin-mocha,light:catppuccin-latte
 font-family = "MonaspiceKr NFM"
 font-size = 18
 auto-update = off
+focus-follows-mouse = true
