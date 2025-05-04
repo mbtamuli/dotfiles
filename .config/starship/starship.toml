@@ -24,6 +24,12 @@ format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
 [gcloud]
 disabled = true
 
+[kubernetes]
+symbol = '☸ '
+format = '[$symbol(\($namespace\)) in $context ]($style)'
+disabled = false
+detect_env_vars = ['KUBECONFIG']
+
 [directory]
 read_only = ' 󰌾'
 style = 'bg:peach fg:crust'
